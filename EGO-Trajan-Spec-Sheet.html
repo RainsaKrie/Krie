@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGO | Trajan Spec Sheet</title>
+    <!-- 引入谷歌字体：硬核石碑体+等宽体+中文硬骨思源宋体(200/300/500/700) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Cinzel+Decorative:wght@400;700&family=Noto+Serif+SC:wght@200;300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        base: '#FFFFFF',             
+                        panel: '#F7F7F9',            
+                        line: 'rgba(0, 0, 0, 0.08)',   // 极其克制的图纸线
+                        textMain: '#000000',          
+                        textMuted: '#666666',         
+                        accentRed: '#FF3333',         
+                        accentBlue: '#0038FF'        
+                    },
+                    fontFamily: {
+                        mono: ['"Fira Code"', 'monospace'],
+                        cinzel: ['"Cinzel Decorative"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 静态纸张噪点纤维层 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.038'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .font-sharp {
+            font-family: "STFangsong", "FangSong", "仿宋", "Noto Serif SC", serif;
+            font-weight: 300;
+        }
+        
+        .font-cn-bold {
+            font-family: "Noto Serif SC", serif;
+            font-weight: 700;
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+        }
+        .animate-float {
+            animation: float-slow 10s ease-in-out infinite;
+        }
+
+        ::selection { background: #FF3333; color: #FFFFFF; }
+    </style>
+</head>
+<body class="bg-base text-textMain overflow-x-hidden min-h-screen font-sharp relative">
+
+    <!-- ==================== 1. 设计师图纸草案硬线 ==================== -->
+    <div class="fixed top-0 left-[18%] w-px h-full bg-line z-0"></div>
+    <div class="fixed top-0 left-[18.2%] w-px h-full bg-accentRed/5 z-0"></div> 
+    <div class="fixed top-0 left-[68%] w-px h-full bg-line z-0 hidden lg:block"></div>
+    
+    <!-- 横向参考线 -->
+    <div class="fixed top-[18vh] left-0 w-full h-px bg-line z-0"></div>
+    <div class="fixed bottom-[12vh] left-0 w-full h-px bg-line z-0"></div>
+
+    <!-- ==================== 2. 印刷裁切标记与测色块 ==================== -->
+    <div class="fixed top-4 left-4 font-mono text-[8px] text-textMuted/30 select-none z-10 hidden md:block">
+        ┌ CROP_L_TOP // BLEED_3MM
+    </div>
+    <div class="fixed top-4 right-4 font-mono text-[8px] text-textMuted/30 text-right select-none z-10 hidden md:block">
+        BLEED_3MM // CROP_R_TOP ┐
+    </div>
+    
+    <!-- 1px 对焦十字准星 -->
+    <div class="fixed top-[18vh] left-[18%] -translate-x-1/2 -translate-y-1/2 text-textMain/40 text-xs font-mono z-10 select-none bg-base px-1.5">[+]</div>
+    <div class="fixed bottom-[12vh] left-[68%] -translate-x-1/2 -translate-y-1/2 text-textMain/20 text-[10px] font-mono z-10 select-none bg-base px-1 hidden lg:block">[+]</div>
+
+    <!-- 斐波那契对角设计测绘线 -->
+    <div class="absolute top-[18vh] left-[18%] w-[1200px] h-[1px] bg-accentBlue/10 origin-top-left rotate-[15deg] z-0 hidden xl:block"></div>
+    <div class="absolute top-[18vh] left-[18%] w-[800px] h-[1px] bg-line origin-top-left -rotate-[8deg] z-0 hidden xl:block"></div>
+    <div class="absolute top-[18vh] left-[20%] text-[7px] text-textMuted/30 font-mono tracking-widest z-0 hidden xl:block">
+      // SYSTEM_GRID: FONT_BASELINE_LEVEL_01 // ANGLE: 15.00°_RAW
+    </div>
+
+    <!-- 垂直延伸数据尺 -->
+    <div class="fixed right-8 top-[28vh] text-[8px] text-textMuted/20 tracking-[0.4em] uppercase hidden xl:block [writing-mode:vertical-lr] font-mono select-none">
+        Cognition__Is__Not__A__Given__Resource____Rebuild__The__Base__At__1327
+    </div>
+
+    <!-- 顶部状态栏 -->
+    <header class="fixed top-0 left-0 w-full h-[8vh] bg-base/80 backdrop-blur-md z-45 px-8 flex justify-between items-center font-mono text-[9px] border-b border-line select-none">
+        <div class="flex items-center gap-4">
+            <span class="inline-block w-1.5 h-1.5 bg-accentRed"></span>
+            <span class="font-cinzel text-xs ml-2 font-bold tracking-widest">ARCHITECT_X</span>
+        </div>
+        <div class="flex items-center gap-8 text-textMuted lowercase font-mono">
+            <span>[spec_sheet_v1.0.9]</span>
+            <span>clock: local_time</span>
+        </div>
+    </header>
+
+    <!-- 主展示网格 -->
+    <main class="relative z-10 w-full pt-[14vh] pb-[16vh] px-[8%] grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- 大标题区：红蓝叠影重叠特化 -->
+        <div class="lg:col-span-12 relative py-12 select-none mb-8" id="titleContainer">
+            <!-- 穿心极细单色参考线 -->
+            <div class="absolute left-0 top-[52%] w-full h-[1px] bg-accentRed/15 z-0"></div>
+            
+            <h1 class="font-cinzel text-6xl md:text-8xl lg:text-9xl text-accentBlue opacity-[0.16] tracking-normal leading-none font-bold uppercase absolute -top-1.5 -left-2 z-0 scale-[1.01] origin-bottom-left select-none">
+                Rebuild
+            </h1>
+            
+            <h1 class="font-cinzel text-6xl md:text-8xl lg:text-9xl text-accentRed opacity-[0.12] tracking-normal leading-none font-bold uppercase absolute top-0.5 left-0.5 z-0 select-none">
+                Rebuild
+            </h1>
+            
+            <h1 class="font-cinzel text-6xl md:text-8xl lg:text-9xl text-textMain tracking-normal leading-none font-bold uppercase relative z-10">
+                Rebuild
+            </h1>
+            
+            <h1 class="font-cinzel text-3xl md:text-4xl lg:text-5xl text-textMuted mt-4 md:ml-40 tracking-widest lowercase relative z-10">
+                the base<span class="font-mono text-xs text-accentRed inline-block ml-1 relative bottom-[2px]">-</span>
+            </h1>
+        </div>
+
+        <!-- ==================== 左侧：自我介绍与指标 (占 5 栏) ==================== -->
+        <section class="lg:col-span-5 flex flex-col gap-12 relative z-10">
+            
+            <div class="flex flex-col gap-4 border-l-2 border-textMain pl-6 relative">
+                <!-- 垂直错位线装饰，模拟未完成的剪报框 (重原样修改为纯黑色，去掉红蓝杂音) -->
+                <div class="absolute -left-[2px] top-0 w-[2px] h-[30%] bg-textMain"></div>
+                
+                <!-- 顶部元数据提示：去掉彩色，完全置灰 -->
+                <div class="text-[9px] text-textMuted tracking-widest uppercase font-mono">
+                    [0] LOG_STREAM_01: RUNTIME_SPEC
+                </div>
+                
+                <!-- 【已修复】：去掉斜线和所有红蓝对色，正文完全使用黑色思源硬宋，中英文流畅对置 -->
+                <h3 class="text-xl text-textMain font-cn-bold select-text tracking-wide flex items-center gap-2">
+                    ARCHITECT_X <span class="text-lg font-light text-textMuted">/ /</span> <span class="text-lg">极客产品人</span>
+                </h3>
+                
+                <p class="text-[13px] leading-loose text-textMuted font-light">
+                    这里是个人描述文本区域。通过将全局体验锁定为极细仿宋，去除了多余的圆滑边缘，使得密集的字词在中英文混排下依然保持锐利与客观的印刷观感。
+                </p>
+                <div class="text-[9px] text-textMuted tracking-wider font-mono select-none">
+                    STATUS: READY // 7月可全职入职 (稳定实习 6 个月以上)
+                </div>
+            </div>
+
+            <!-- 技能栈 (直角硬边缘) -->
+            <div class="border border-line p-6 bg-panel/30 relative">
+                <div class="absolute -top-[1px] -right-[1px] w-2 h-2 border-t border-r border-textMain"></div>
+                <div class="absolute -bottom-[1px] -left-[1px] w-2.5 h-2.5 border-b border-l border-textMain"></div>
+                
+                <div class="text-[9px] text-textMuted font-mono uppercase tracking-widest border-b border-line pb-2 mb-6 select-none font-mono">
+                    [TECHNICAL_SPECIFICATION]
+                </div>
+                <ul class="text-[13px] leading-loose text-textMuted flex flex-col gap-4">
+                    <li><span class="text-textMain font-cn-bold font-medium">技能分类一 :</span> <span class="font-mono">Fira_Code_01</span> / 仿宋字骨_02 / 特立独行_03</li>
+                    <li><span class="text-textMain font-cn-bold font-medium">技能分类二 :</span> <span class="font-mono">Fira_Code_04</span> / 矢量检索_05 / 意图分类_06</li>
+                    <li><span class="text-textMain font-cn-bold font-medium">技能分类三 :</span> <span class="font-mono">Fira_Code_07</span> / 并发控制_08 / 最终一致_09</li>
+                </ul>
+            </div>
+
+            <!-- 脱敏联系信息 -->
+            <div class="border-t border-line pt-6 text-xs text-textMuted flex flex-col gap-2 font-mono">
+                <p>[CONTACT_PORTAL]</p>
+                <p>EMAIL: xxxxxxx@domain.me</p>
+                <p>GITHUB: github.com/architect-x</p>
+            </div>
+
+        </section>
+
+        <!-- ==================== 右侧：作品集与经历 (占 7 栏) ==================== -->
+        <section class="lg:col-span-7 flex flex-col gap-8 relative z-10">
+            
+            <div class="text-[10px] font-mono text-textMuted uppercase tracking-widest border-b border-line pb-2 mb-2 select-none">
+                [PORTFOLIO_MATRIX // 核心项目与经历占位符]
+            </div>
+
+            <!-- 项目 1 -->
+            <div class="relative group">
+                <div class="absolute inset-0 border border-accentBlue translate-x-[-1px] translate-y-[-1px] opacity-30 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
+                <div class="absolute inset-0 border border-accentRed translate-x-[1px] translate-y-[1px] opacity-20 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
+                
+                <article class="relative z-10 bg-base p-8 border border-textMain cursor-crosshair flex flex-col gap-6">
+                    <div class="flex justify-between items-center border-b border-line pb-4 font-mono text-xs">
+                        <h3 class="font-cinzel text-xl text-textMain font-bold uppercase font-bold">Project_Alpha</h3>
+                        <span class="text-[9px] border border-textMain/15 px-2 py-0.5 text-textMuted group-hover:text-accentRed group-hover:border-accentRed transition-colors font-bold tracking-widest font-mono">01.SPEC_TAG_01</span>
+                    </div>
+                    <p class="text-[13px] text-textMuted leading-relaxed font-light">
+                        项目描述占位内容。在大批量的文本块注入时，极细的字骨展示能够完美对齐右侧的英文专有名词（如 <span class="font-mono">Agentic</span>, <span class="font-mono">Reranking</span>），不会因为中英文粗细失衡而产生割裂。
+                    </p>
+                </article>
+            </div>
+
+            <!-- 项目 2 -->
+            <div class="relative group">
+                <div class="absolute inset-0 border border-accentBlue translate-x-[-1px] translate-y-[-1px] opacity-30 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
+                <div class="absolute inset-0 border border-accentRed translate-x-[1px] translate-y-[1px] opacity-20 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
+                
+                <article class="relative z-10 bg-base p-8 border border-textMain cursor-crosshair flex flex-col gap-6">
+                    <div class="flex justify-between items-start mb-12">
+                        <h2 class="font-cinzel text-2xl text-textMain leading-none font-bold uppercase font-bold">Project_Beta</h2>
+                        <span class="text-[9px] border border-textMain/20 px-2 py-1 text-textMuted group-hover:text-accentRed group-hover:border-accentRed transition-colors font-bold tracking-widest font-mono">02.SPEC_TAG_02</span>
+                    </div>
+                    <p class="text-[13px] text-textMuted leading-relaxed font-light">
+                        通过严密的 <span class="font-mono">Zod Schema</span> 运行时参数强校验，配合后端重试（<span class="font-mono">Self-Correction</span>）大模型意图路由，在工程层面收敛系统出入参的不确定性。
+                    </p>
+                </article>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 底栏 -->
+    <footer class="fixed bottom-0 left-0 w-full h-[8vh] bg-base/80 backdrop-blur-md z-45 px-8 flex justify-between items-center font-mono text-[8px] text-textMuted border-t border-line select-none">
+        <span>PROJECT_EGO_PORTFOLIO_MATRIX</span>
+        <span>COPYRIGHT_0x1327 // NO_HALLUCINATION_ALLOWED</span>
+    </footer>
+
+</body>
+</html>
