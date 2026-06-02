@@ -11,9 +11,9 @@ export default {
         cyberPanel: "#F7F7F9",
         cyberAccent: "#FF3333",
         base: "#FFFFFF",
-        line: "rgba(0, 0, 0, 0.08)",
-        textMain: "#000000",
-        textMuted: "#666666",
+        line: "rgba(0, 0, 0, 0.14)",
+        textMain: "#222222",
+        textMuted: "#4B5563",
         accentRed: "#FF3333",
         accentBlue: "#0038FF"
       },

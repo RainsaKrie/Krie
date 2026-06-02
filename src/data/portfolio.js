@@ -1,14 +1,14 @@
 export const heroData = {
-  title: "Rebuild",
-  tagline: "the base",
-  subtitle: "重建基底"
+  title: "Krie",
+  tagline: "profile",
+  subtitle: "个人简介"
 };
 
 export const statusBarData = {
   id: "ARCHITECT_X",
   leftMeta: ["[grid_lock:on]", "axis: 18/68"],
   rightMeta: [
-    "[spec_sheet_v1.0.9]",
+    "[spec_sheet_v2.0.0]",
     "paper_noise: 0.038",
     "draft_mode: active",
     "clock: local_time"
@@ -19,7 +19,7 @@ export const profileData = {
   id: "ARCHITECT_X",
   title: "极客产品人",
   bio:
-    "这里是个人描述文本区域。这个版本先保留克制、公开可展示的介绍口径，用来承接后续正式简历、项目经历与个人方法论。",
+    "这里是个人描述文本区域。当前版本保留克制、可公开展示的说明口径，用来承接后续正式简历、项目经历与方法论表达。",
   status: "READY // 可按正式求职节奏更新",
   logLabel: "[0] LOG_STREAM_01: RUNTIME_SPEC"
 };
@@ -27,7 +27,8 @@ export const profileData = {
 export const contactData = {
   title: "Contact",
   subtitle: "联系入口",
-  label: "[CONTACT_PORTAL]",
+  labelEmail: "[PORTAL: EMAIL]",
+  labelGithub: "[PORTAL: GITHUB]",
   email: "hello@your-domain.com",
   github: "github.com/your-handle"
 };
@@ -55,29 +56,57 @@ export const skillsData = {
 export const portfolioData = {
   title: "Portfolio",
   subtitle: "作品矩阵",
-  label: "[PORTFOLIO_MATRIX // SELECTED WORKS]"
+  featuredLabel: "[FEATURED_SHOWCASE // STAGGERED_POSTER]",
+  archiveLabel: "[ARCHIVE_TABLE // ENGINEERING_BOM]"
 };
 
 export const projects = [
   {
     id: "01",
-    title: "Project_Alpha",
-    subtitle: "项目甲板",
-    tag: "01.SPEC_TAG_01",
+    title: "Conflux",
+    subtitle: "知识底座",
+    featured: true,
+    status: "ACTIVE",
+    version: "v1.0.0",
+    tags: ["React", "RAG", "Search"],
+    link: "#",
     description:
-      "这里放一个可公开展示的项目摘要。建议后续替换成真实项目中的目标、方法、结果三段式信息，并保留少量 <span class='font-mono'>technical keywords</span> 来维持当前版式语气。"
+      "围绕知识检索与工作流收敛搭建的个人知识底座，用静默期、模糊匹配和结构化回写降低大模型调用噪音。"
   },
   {
     id: "02",
-    title: "Project_Beta",
-    subtitle: "项目乙板",
-    tag: "02.SPEC_TAG_02",
+    title: "Krie",
+    subtitle: "个人基座",
+    featured: true,
+    status: "MAINTAINING",
+    version: "v0.8.2",
+    tags: ["Vite", "React", "Design"],
+    link: "#",
     description:
-      "这里放第二个项目的公开说明。后续可以写你在系统设计、内容策略、Agent 工作流或工程协作中的实际贡献，让页面从视觉样板过渡到正式作品集。"
+      "以白底硬边和制图式结构线为核心语言，构建一个可持续扩展的个人网站基线，用来承接作品、经历与方法论。"
+  },
+  {
+    id: "03",
+    title: "Spec Flow",
+    subtitle: "规格流转",
+    featured: false,
+    status: "COMPLETED",
+    version: "v1.2.0",
+    tags: ["Schema", "Docs", "PM"],
+    link: "#",
+    description:
+      "围绕需求拆解、规格抽象与执行对齐建立的流程实验，用文档结构和状态标识收束多角色协作。"
+  },
+  {
+    id: "04",
+    title: "Archive Node",
+    subtitle: "归档节点",
+    featured: false,
+    status: "ACTIVE",
+    version: "v0.6.4",
+    tags: ["Rust", "Index", "Infra"],
+    link: "#",
+    description:
+      "面向长期工程归档的轻量节点，聚焦索引、版本和状态追踪，用于展示持续维护型项目。"
   }
 ];
-
-export const footerData = {
-  left: "PROJECT_EGO_PORTFOLIO_MATRIX",
-  right: "COPYRIGHT_0x1327 // NO_HALLUCINATION_ALLOWED"
-};

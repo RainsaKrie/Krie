@@ -45,3 +45,19 @@ body::before {
 ::-webkit-scrollbar {
   width: 0;
 }
+
+.archive-row {
+  background: transparent;
+}
+
+.archive-row-glitch {
+  transform: translateX(0);
+  text-shadow: none;
+}
+
+.archive-row:hover .archive-row-glitch {
+  transform: translateX(1px);
+  text-shadow:
+    1.5px 0.5px 0 rgba(255, 51, 51, 0.75),
+    -1.5px -0.5px 0 rgba(0, 51, 255, 0.75);
+}
